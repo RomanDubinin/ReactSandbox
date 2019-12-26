@@ -7,5 +7,6 @@ export default (params) => {
         <p>{params.phone}</p>
         <p>{params.address}</p>
         <input type='text' onChange={params.onChangePhone} value={params.phone} />
+        <button onClick={params.onDelete}>Delete</button>
     </div>
 }

@@ -38,6 +38,14 @@ class App extends React.Component {
             persons: persons
         })
     }
+    onDeletePerson(index){
+        const persons = this.state.persons
+        persons.splice(index, 1)
+
+        this.setState({
+            persons
+        })
+    }
 
     render() {
         let persons = this.state.showPersons
@@ -64,7 +72,8 @@ class App extends React.Component {
                         surname={person.surname}
                         address={person.address}
                         phone={person.phone}
-                        onChangePhone={event => this.onChangePhone(event.target.value, index)}/>
+                        onChangePhone={event => this.onChangePhone(event.target.value, index)}
+                        onDelete={this.onDeletePerson.bind(this, index)}/>
                 })}
             </div>
         );
