@@ -29,6 +29,15 @@ class App extends React.Component {
             showPersons: !this.state.showPersons
         })
     }
+    onChangePhone(phone, index){
+        const person = this.state.persons[index]
+        person.phone = phone
+
+        const persons = [...this.state.persons]
+        this.setState({
+            persons: persons
+        })
+    }
 
     render() {
         let persons = this.state.showPersons
@@ -54,7 +63,8 @@ class App extends React.Component {
                         name={person.name}
                         surname={person.surname}
                         address={person.address}
-                        phone={person.phone}/>
+                        phone={person.phone}
+                        onChangePhone={event => this.onChangePhone(event.target.value, index)}/>
                 })}
             </div>
         );

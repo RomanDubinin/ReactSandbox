@@ -6,5 +6,6 @@ export default (params) => {
         <h2>{params.surname}</h2>
         <p>{params.phone}</p>
         <p>{params.address}</p>
+        <input type='text' onChange={params.onChangePhone} value={params.phone} />
     </div>
 }
