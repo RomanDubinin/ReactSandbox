@@ -53,7 +53,9 @@ class App extends React.Component {
             : [];
 
         return (
-            <div>
+            <div style={{
+                textAlign: 'center'
+            }}>
                 <h1>Hello World</h1>
                 <p>{this.state.title}</p>
                 <input type='text' onChange={this.handleInput.bind(this)}/>
