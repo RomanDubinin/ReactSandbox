@@ -10,7 +10,8 @@ class App extends React.Component {
             persons: [
                 {name: 'Joe', surname: 'Jonson', address: 'His address', phone: '8 800 35 35'},
                 {name: 'Frederick', surname: 'Brooks', address: 'His address'}
-            ]
+            ],
+            showPersons: false
         };
     }
     handleChangeTitle() {
@@ -23,8 +24,17 @@ class App extends React.Component {
             potentialTitle: event.target.value
         })
     }
+    togglePersons(){
+        this.setState({
+            showPersons: !this.state.showPersons
+        })
+    }
 
     render() {
+        let persons = this.state.showPersons
+            ? this.state.persons
+            : [];
+
         return (
             <div>
                 <h1>Hello World</h1>
@@ -33,8 +43,12 @@ class App extends React.Component {
                 <button onClick={this.handleChangeTitle.bind(this)}>
                     ChangeTitle
                 </button>
+                <br/>
+                <button onClick={this.togglePersons.bind(this)}>
+                    Toggle persons
+                </button>
 
-                {this.state.persons.map((person, index) => {
+                {persons.map((person, index) => {
                     return <Person
                         key={index}
                         name={person.name}
