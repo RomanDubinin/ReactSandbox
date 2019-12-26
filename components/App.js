@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import Person from './Person'
 
 class App extends React.Component {
@@ -6,7 +6,11 @@ class App extends React.Component {
         super();
         this.state = {
             title: 'Welcome to my world dude!',
-            potentialTitle: ''
+            potentialTitle: '',
+            persons: [
+                {name: 'Joe', surname: 'Jonson', address: 'His address', phone: '8 800 35 35'},
+                {name: 'Frederick', surname: 'Brooks', address: 'His address'}
+            ]
         };
     }
     handleChangeTitle() {
@@ -29,8 +33,15 @@ class App extends React.Component {
                 <button onClick={this.handleChangeTitle.bind(this)}>
                     ChangeTitle
                 </button>
-                <Person name='Joe' surname='Jonson' address='His address' phone='8 800 35 35'/>
-                <Person name='Frederick' surname='Brooks' address='His address'/>
+
+                {this.state.persons.map((person, index) => {
+                    return <Person
+                        key={index}
+                        name={person.name}
+                        surname={person.surname}
+                        address={person.address}
+                        phone={person.phone}/>
+                })}
             </div>
         );
     }
