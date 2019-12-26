@@ -9,7 +9,7 @@ class App extends React.Component {
             potentialTitle: '',
             persons: [
                 {name: 'Joe', surname: 'Jonson', address: 'His address', phone: '8 800 35 35'},
-                {name: 'Frederick', surname: 'Brooks', address: 'His address'}
+                {name: 'Frederick', surname: 'Brooks', address: 'His address', phone: ''}
             ],
             showPersons: false
         };
