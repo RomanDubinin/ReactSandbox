@@ -1,5 +1,6 @@
 import React from 'react'
 import Person from './Person/Person'
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 import './App.scss'
 
 class App extends React.Component {
@@ -72,14 +73,15 @@ class App extends React.Component {
                 </button>
 
                 {persons.map((person, index) => {
-                    return <Person
-                        key={index}
-                        name={person.name}
-                        surname={person.surname}
-                        address={person.address}
-                        phone={person.phone}
-                        onChangePhone={event => this.onChangePhone(event.target.value, index)}
-                        onDelete={this.onDeletePerson.bind(this, index)}/>
+                    return <ErrorBoundary key={index}>
+                        <Person
+                            name={person.name}
+                            surname={person.surname}
+                            address={person.address}
+                            phone={person.phone}
+                            onChangePhone={event => this.onChangePhone(event.target.value, index)}
+                            onDelete={this.onDeletePerson.bind(this, index)}/>
+                    </ErrorBoundary>
                 })}
             </div>
         );
