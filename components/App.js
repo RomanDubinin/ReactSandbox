@@ -1,5 +1,6 @@
 import React from 'react'
 import Person from './Person/Person'
+import './App.scss'
 
 class App extends React.Component {
     constructor() {
@@ -59,11 +60,14 @@ class App extends React.Component {
                 <h1>Hello World</h1>
                 <p>{this.state.title}</p>
                 <input type='text' onChange={this.handleInput.bind(this)}/>
-                <button onClick={this.handleChangeTitle.bind(this)}>
+                <button
+                    onClick={this.handleChangeTitle.bind(this)}>
                     ChangeTitle
                 </button>
                 <br/>
-                <button onClick={this.togglePersons.bind(this)}>
+                <button
+                    className={'ToggleButton'}
+                    onClick={this.togglePersons.bind(this)}>
                     Toggle persons
                 </button>
 

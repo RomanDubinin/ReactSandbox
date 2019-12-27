@@ -1,0 +1,13 @@
+.ToggleButton{
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  font-weight: bold;
+
+  &:focus, &:active{
+    outline: none;
+  }
+
+  &:hover{
+    background: #1a72cc;
+  }
+}
