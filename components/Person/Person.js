@@ -2,6 +2,10 @@ import React from 'react';
 import './Person.css'
 
 class Person extends React.Component{
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return nextProps.phone.replace(/[^0-9 ]/g, '') !== this.props.phone.replace(/[^0-9 ]/g, '')
+    }
+
     render(){
         const inputClasses = ['input']
 
