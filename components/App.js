@@ -3,8 +3,8 @@ import Person from './Person/Person'
 import './App.scss'
 
 class App extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             title: 'Welcome to my world dude!',
             potentialTitle: '',
