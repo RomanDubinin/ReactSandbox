@@ -6,6 +6,10 @@ class Person extends React.Component{
         return nextProps.phone.replace(/[^0-9 ]/g, '') !== this.props.phone.replace(/[^0-9 ]/g, '')
     }
 
+    componentDidMount() {
+        this.inputRef.focus()
+    }
+
     render(){
         //just for test ErrorBoundary
         // if (Math.random() > 0.5)
@@ -25,6 +29,7 @@ class Person extends React.Component{
             <p>{this.props.phone}</p>
             <p>{this.props.address}</p>
             <input
+                ref={(inputRef) => this.inputRef = inputRef}
                 type='text'
                 onChange={this.props.onChangePhone}
                 value={this.props.phone}
