@@ -7,7 +7,8 @@ class Person extends React.Component{
     }
 
     componentDidMount() {
-        this.inputRef.focus()
+        if (this.props.mustBeInFocus)
+           this.inputRef.focus()
     }
 
     render(){

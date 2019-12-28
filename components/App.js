@@ -11,7 +11,8 @@ class App extends React.Component {
             potentialTitle: '',
             persons: [
                 {name: 'Joe', surname: 'Jonson', address: 'His address', phone: '8 800 35 35'},
-                {name: 'Frederick', surname: 'Brooks', address: 'His address', phone: ''}
+                {name: 'Frederick', surname: 'Brooks', address: 'His address', phone: ''},
+                {name: 'Ivan', surname: 'Dorn', address: 'His address', phone: '123'}
             ],
             showPersons: false
         };
@@ -54,6 +55,8 @@ class App extends React.Component {
             ? this.state.persons
             : [];
 
+        const focusIndex = persons.findIndex(x => x.phone === '');
+
         return (
             <div style={{
                 textAlign: 'center'
@@ -79,6 +82,7 @@ class App extends React.Component {
                             surname={person.surname}
                             address={person.address}
                             phone={person.phone}
+                            mustBeInFocus={index === focusIndex}
                             onChangePhone={event => this.onChangePhone(event.target.value, index)}
                             onDelete={this.onDeletePerson.bind(this, index)}/>
                     </ErrorBoundary>
