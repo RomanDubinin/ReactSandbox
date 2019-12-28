@@ -8,8 +8,8 @@ class Person extends React.Component{
 
     render(){
         //just for test ErrorBoundary
-        if (Math.random() > 0.5)
-            throw new Error('Testing')
+        // if (Math.random() > 0.5)
+        //     throw new Error('Testing')
 
         const inputClasses = ['input']
 
