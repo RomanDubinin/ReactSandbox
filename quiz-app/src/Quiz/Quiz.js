@@ -8,6 +8,7 @@ class Quiz extends React.Component{
 
         this.state = {
             currentQuestionNumber: 0,
+            currentAnswerState: null,
             quiz: [
                 {
                     question: 'Question1',
@@ -33,11 +34,37 @@ class Quiz extends React.Component{
         }
     }
 
+    quizIsFinished(){
+        return this.state.quiz.length === this.state.currentQuestionNumber+1;
+    }
+
     onAnswerClick(answerId){
-        console.log(answerId);
-        this.setState({
-            currentQuestionNumber: this.state.currentQuestionNumber+1
-        })
+        const question = this.state.quiz[this.state.currentQuestionNumber];
+        if (question.rightAnswerId === answerId){
+
+            this.setState({
+                currentAnswerState: {[answerId]: {value: true} }
+            });
+
+            const timeout = window.setTimeout(() => {
+                if (this.quizIsFinished()){
+                    console.log("Fisnished");
+                }
+                else{
+                    this.setState({
+                        currentQuestionNumber: this.state.currentQuestionNumber+1,
+                        currentAnswerState: null
+                    })
+                }
+
+                window.clearTimeout(timeout);
+            }, 1000)
+        }
+        else{
+            this.setState({
+                currentAnswerState: {[answerId]: {value: false} }
+            });
+        }
     }
 
     render() {
@@ -50,10 +77,11 @@ class Quiz extends React.Component{
                     <ActiveQuiz
                         question={this.state.quiz[this.state.currentQuestionNumber].question}
                         answers={this.state.quiz[this.state.currentQuestionNumber].answers}
-                        rightAnswerId={this.state.quiz[0].rightAnswerId}
+                        rightAnswerId={this.state.quiz[this.state.currentQuestionNumber].rightAnswerId}
                         onAnswerClick={this.onAnswerClick.bind(this)}
                         questionsCount={this.state.quiz.length}
                         currentQuestionNumber={this.state.currentQuestionNumber+1}
+                        currentAnswerState={this.state.currentAnswerState}
                     />
                 </div>
             </div>

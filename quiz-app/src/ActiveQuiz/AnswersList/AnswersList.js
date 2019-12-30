@@ -9,6 +9,7 @@ const AnswersList = props =>(
                 key={index}
                 answer={answer}
                 onAnswerClick={props.onAnswerClick}
+                currentAnswerState={props.currentAnswerState ? props.currentAnswerState[answer.id] : null}
             />
         })}
     </ul>
