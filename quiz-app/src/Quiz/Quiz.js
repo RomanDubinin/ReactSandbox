@@ -39,6 +39,9 @@ class Quiz extends React.Component{
     }
 
     onAnswerClick(answerId){
+        if (this.state.currentAnswerState !== null)
+            return;
+
         const question = this.state.quiz[this.state.currentQuestionNumber];
         if (question.rightAnswerId === answerId){
 
