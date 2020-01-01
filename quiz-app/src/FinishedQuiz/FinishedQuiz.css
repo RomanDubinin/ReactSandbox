@@ -1,0 +1,26 @@
+.FinishedQuiz{
+    padding: 20px;
+    color: #F0F8FF;
+    border: 2px solid #F0F8FF;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin: 0 10px;
+}
+
+.FinishedQuiz ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.FinishedQuiz ul li i {
+    margin-left: 10px;
+}
+
+.correctAnswer {
+    color: #0b5305;
+}
+
+.wrongAnswer {
+    color: #871912;
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import ActiveQuiz from "../ActiveQuiz/ActiveQuiz";
+import FinishedQuiz from "../FinishedQuiz/FinishedQuiz";
 import './Quiz.css'
 
 class Quiz extends React.Component{
@@ -7,6 +8,8 @@ class Quiz extends React.Component{
         super(props);
 
         this.state = {
+            quizIsFinished: false,
+            results: {}, // {[id] : correct or incorrect}
             currentQuestionNumber: 0,
             currentAnswerState: null,
             quiz: [
@@ -45,16 +48,24 @@ class Quiz extends React.Component{
                 return;
         }
 
-        const question = this.state.quiz[this.state.currentQuestionNumber];
-        if (question.rightAnswerId === answerId){
+        const questionId = this.state.currentQuestionNumber;
+        const question = this.state.quiz[questionId];
+        const results = this.state.results;
 
+        if (question.rightAnswerId === answerId){
+            if (!results[questionId]){
+                results[questionId] = 'correct';
+            }
             this.setState({
-                currentAnswerState: {[answerId]: {value: true} }
+                currentAnswerState: {[answerId]: {value: true} },
+                results
             });
 
             const timeout = window.setTimeout(() => {
                 if (this.quizIsFinished()){
-                    console.log("Fisnished");
+                    this.setState({
+                        quizIsFinished: true
+                    });
                 }
                 else{
                     this.setState({
@@ -67,8 +78,10 @@ class Quiz extends React.Component{
             }, 1000)
         }
         else{
+            results[questionId] = 'incorrect';
             this.setState({
-                currentAnswerState: {[answerId]: {value: false} }
+                currentAnswerState: {[answerId]: {value: false} },
+                results
             });
         }
     }
@@ -80,15 +93,23 @@ class Quiz extends React.Component{
                     <h1>
                         Quiz
                     </h1>
-                    <ActiveQuiz
-                        question={this.state.quiz[this.state.currentQuestionNumber].question}
-                        answers={this.state.quiz[this.state.currentQuestionNumber].answers}
-                        rightAnswerId={this.state.quiz[this.state.currentQuestionNumber].rightAnswerId}
-                        onAnswerClick={this.onAnswerClick.bind(this)}
-                        questionsCount={this.state.quiz.length}
-                        currentQuestionNumber={this.state.currentQuestionNumber+1}
-                        currentAnswerState={this.state.currentAnswerState}
-                    />
+                    {
+                        this.state.quizIsFinished
+                        ? <FinishedQuiz
+                            results={this.state.results}
+                            quiz={this.state.quiz}
+                            />
+                        : <ActiveQuiz
+                                question={this.state.quiz[this.state.currentQuestionNumber].question}
+                                answers={this.state.quiz[this.state.currentQuestionNumber].answers}
+                                rightAnswerId={this.state.quiz[this.state.currentQuestionNumber].rightAnswerId}
+                                onAnswerClick={this.onAnswerClick.bind(this)}
+                                questionsCount={this.state.quiz.length}
+                                currentQuestionNumber={this.state.currentQuestionNumber+1}
+                                currentAnswerState={this.state.currentAnswerState}
+                            />
+                    }
+
                 </div>
             </div>
         );
