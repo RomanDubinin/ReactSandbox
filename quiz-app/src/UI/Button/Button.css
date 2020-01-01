@@ -1,0 +1,33 @@
+.Button{
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    color: #121d3a;
+    margin-right: 15px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.Button:focus{
+    outline: none;
+}
+
+.Button:active{
+    box-shadow: inset 2px 2px 1px #2fb2fb;
+}
+
+.buttonError{
+    background: #871912;
+    color: #F0F8FF;
+}
+
+.buttonSuccess{
+    background: #0b5305;
+    color: #F0F8FF;
+}
+
+.buttonPrimary{
+    background: #282c34;
+    color: #F0F8FF;
+}

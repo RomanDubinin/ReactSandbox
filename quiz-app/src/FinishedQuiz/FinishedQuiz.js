@@ -1,5 +1,7 @@
 import React from "react";
+import Button from '../UI/Button/Button'
 import './FinishedQuiz.css'
+
 
 const FinishedQuiz = props =>{
     const rightAnswers = Object.keys(props.results).reduce((total, key) => {
@@ -25,6 +27,13 @@ const FinishedQuiz = props =>{
             </ul>
 
             <p>Right {rightAnswers} from {props.quiz.length}</p>
+
+            <Button onClick={props.OnRestart} buttonType={'primary'}>
+                Restart
+            </Button>
+            <Button buttonType={'success'}>
+                Go to tests list
+            </Button>
     </div>)
 };
 

@@ -41,6 +41,15 @@ class Quiz extends React.Component{
         return this.state.quiz.length === this.state.currentQuestionNumber+1;
     }
 
+    onRestart(){
+        this.setState({
+            quizIsFinished: false,
+            results: {},
+            currentQuestionNumber: 0,
+            currentAnswerState: null,
+        })
+    }
+
     onAnswerClick(answerId){
         if (this.state.currentAnswerState !== null){
             const key = Object.keys(this.state.currentAnswerState)[0]
@@ -98,6 +107,7 @@ class Quiz extends React.Component{
                         ? <FinishedQuiz
                             results={this.state.results}
                             quiz={this.state.quiz}
+                            OnRestart={this.onRestart.bind(this)}
                             />
                         : <ActiveQuiz
                                 question={this.state.quiz[this.state.currentQuestionNumber].question}
@@ -109,7 +119,6 @@ class Quiz extends React.Component{
                                 currentAnswerState={this.state.currentAnswerState}
                             />
                     }
-
                 </div>
             </div>
         );
