@@ -19,6 +19,12 @@ class Layout extends React.Component{
         })
     }
 
+    onBlackdropClick(){
+        this.setState({
+            toggleIsOpen: false
+        })
+    }
+
     render() {
         return <div className={'Layout'}>
             <MenuToggle
@@ -27,6 +33,7 @@ class Layout extends React.Component{
             />
             <Drawer
                 toggleIsOpen={this.state.toggleIsOpen}
+                onBlackdropClick={this.onBlackdropClick.bind(this)}
             />
 
             <main>

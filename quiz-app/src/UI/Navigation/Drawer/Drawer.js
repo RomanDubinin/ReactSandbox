@@ -1,4 +1,5 @@
 import React from "react";
+import Blackdrop from "../../Blackdrop/Blackdrop";
 import './Drawer.css'
 
 const links = [
@@ -20,19 +21,22 @@ class Drawer extends React.Component{
             cls.push('close')
         }
         return (
-            <nav className={cls.join(' ')}>
-                <ul>
-                    {links.map((x, i) =>{
-                        return(
-                            <li
-                                key={i}
-                            >
-                                <a>{x}</a>
-                            </li>
-                        )
-                    })}
-                </ul>
-            </nav>
+            <React.Fragment>
+                <nav className={cls.join(' ')}>
+                    <ul>
+                        {links.map((x, i) =>{
+                            return(
+                                <li
+                                    key={i}
+                                >
+                                    <a>{x}</a>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </nav>
+                {this.props.toggleIsOpen ? <Blackdrop onClick={this.props.onBlackdropClick}/> : null}
+            </React.Fragment>
         );
     }
 }
