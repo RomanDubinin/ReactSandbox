@@ -1,0 +1,42 @@
+.Drawer{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 80%;
+    max-width: 150px;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    background: #101122;
+    transform: translateX(0px);
+    transition: transform 0.2s ease-in;
+    z-index: 9;
+}
+
+.Drawer.close{
+    transform: translateX(-150px);
+}
+
+.Drawer ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.Drawer ul li{
+    margin-bottom: 15px;
+}
+
+.Drawer ul li a{
+    color: #203c90;
+    font-size: 20px;
+    text-decoration: none;
+    background-color: #282c34;
+    position: relative;
+    padding: 0px 20px 10px 20px;
+    transition: opacity 0.3s;
+}
+
+.Drawer ul li a:hover{
+    opacity: 0.7%;
+}
