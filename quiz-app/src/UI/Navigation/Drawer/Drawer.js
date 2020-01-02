@@ -1,9 +1,12 @@
 import React from "react";
+import {NavLink} from 'react-router-dom'
 import Blackdrop from "../../Blackdrop/Blackdrop";
 import './Drawer.css'
 
 const links = [
-    'Link1', "Link2", "Link3"
+    {to: '/', title:'List', exact: true},
+    {to: '/auth', title:'Authorization', exact: false},
+    {to: '/quiz-creator', title:'Create quiz', exact: false}
 ];
 
 class Drawer extends React.Component{
@@ -26,16 +29,19 @@ class Drawer extends React.Component{
                     <ul>
                         {links.map((x, i) =>{
                             return(
-                                <li
-                                    key={i}
-                                >
-                                    <a>{x}</a>
+                                <li key={i}>
+                                    <NavLink
+                                        to={x.to}
+                                        exact={x.exact}
+                                        activeClassName={'active'}
+                                        onClick={this.props.onClose}
+                                    >{x.title}</NavLink>
                                 </li>
                             )
                         })}
                     </ul>
                 </nav>
-                {this.props.toggleIsOpen ? <Blackdrop onClick={this.props.onBlackdropClick}/> : null}
+                {this.props.toggleIsOpen ? <Blackdrop onClick={this.props.onClose}/> : null}
             </React.Fragment>
         );
     }

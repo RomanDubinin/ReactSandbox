@@ -33,7 +33,7 @@ class Layout extends React.Component{
             />
             <Drawer
                 toggleIsOpen={this.state.toggleIsOpen}
-                onBlackdropClick={this.onBlackdropClick.bind(this)}
+                onClose={this.onBlackdropClick.bind(this)}
             />
 
             <main>
