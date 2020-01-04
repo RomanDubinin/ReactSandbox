@@ -1,6 +1,7 @@
 import React from "react";
 import Button from '../UI/Button/Button'
 import './FinishedQuiz.css'
+import {Link} from "react-router-dom";
 
 
 const FinishedQuiz = props =>{
@@ -31,9 +32,11 @@ const FinishedQuiz = props =>{
             <Button onClick={props.OnRestart} buttonType={'primary'}>
                 Restart
             </Button>
-            <Button buttonType={'success'}>
-                Go to tests list
-            </Button>
+            <Link to={'/'}>
+                <Button buttonType={'success'}>
+                    Go to tests list
+                </Button>
+            </Link>
     </div>)
 };
 
