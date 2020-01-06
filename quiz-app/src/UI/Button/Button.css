@@ -17,6 +17,12 @@
     box-shadow: inset 2px 2px 1px #2fb2fb;
 }
 
+.Button:disabled {
+    background: #aaa;
+    color: #F0F8FF;
+    cursor: not-allowed;
+}
+
 .buttonError{
     background: #871912;
     color: #F0F8FF;

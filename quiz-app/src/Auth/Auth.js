@@ -9,6 +9,7 @@ export default class Auth extends React.Component{
         super(props);
 
         this.state = {
+            isFormValid: false,
             formControls:{
                 email: {
                     value: '',
@@ -74,9 +75,14 @@ export default class Auth extends React.Component{
         control.touched = true;
         control.valid = this.validateControl(control.value, control.validation)
 
+        let isFormValid = true;
+        Object.keys(formControls).forEach(name => {
+            isFormValid = formControls[name].valid && isFormValid;
+        });
+
         formControls[controlName] = control;
         this.setState({
-            formControls
+            formControls, isFormValid
         })
     };
 
@@ -111,12 +117,14 @@ export default class Auth extends React.Component{
                         <Button
                             buttonType='success'
                             onClick={this.loginHandler}
+                            disabled={!this.state.isFormValid}
                         >
                             SignIn
                         </Button>
                         <Button
                             buttonType='primary'
                             onClick={this.registerHandler}
+                            disabled={!this.state.isFormValid}
                         >
                             SignUp
                         </Button>
