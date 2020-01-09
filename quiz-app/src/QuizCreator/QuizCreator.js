@@ -3,7 +3,7 @@ import Button from "../UI/Button/Button";
 import Input from "../UI/Input/Input";
 import Select from "../UI/Select/Select";
 import {createControl, validate, validateForm} from "../Form/FormFramework";
-import axios from "axios"
+import backend from "../Backend/Backend"
 import './QuizCreator.css'
 
 function createOptionControl(number) {
@@ -80,8 +80,8 @@ export default class QuizCreator extends React.Component{
         event.preventDefault();
 
         try{
-            await axios.post(
-                'https://quiz-app-test-65023.firebaseio.com/quizes.json',
+            await backend.post(
+                'quizes.json',
                 this.state.quiz);
 
             this.setState({

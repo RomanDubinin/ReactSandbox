@@ -2,7 +2,7 @@ import React from "react";
 import './QuizList.css'
 import Loader from "../UI/Loader/Loader";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
+import backend from "../Backend/Backend";
 
 export default class QuizList extends React.Component{
 
@@ -14,9 +14,8 @@ export default class QuizList extends React.Component{
     async componentDidMount() {
         try {
 
-            const response = await axios.get('https://quiz-app-test-65023.firebaseio.com/quizes.json')
+            const response = await backend.get('quizes.json')
 
-            console.log(response)
             const quiz = [];
             Object.keys(response.data).forEach((key, index) => {
                 quiz.push({
