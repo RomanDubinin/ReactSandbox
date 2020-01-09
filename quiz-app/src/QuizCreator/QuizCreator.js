@@ -132,7 +132,7 @@ export default class QuizCreator extends React.Component{
 
     selectChangeHandler = event => {
         this.setState({
-            rightAnswerId: event.target.value
+            rightAnswerId: +event.target.value
         })
     };
 
