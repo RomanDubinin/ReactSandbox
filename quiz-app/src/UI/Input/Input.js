@@ -10,7 +10,7 @@ const Input = (props) =>{
     const cls = ['Input'];
     const htmlFor = `${inputType}-${Math.random()}`;
     if (IsInvalid(props))
-        cls.push('Invalid')
+        cls.push('Invalid');
     return(
         <div className={cls.join(' ')}>
             <label htmlFor={htmlFor}>{props.label}</label>

@@ -3,6 +3,9 @@ import Button from "../UI/Button/Button";
 import Input from "../UI/Input/Input";
 import {validate, validateForm} from "../Form/FormFramework";
 import './Auth.css'
+import axios from 'axios'
+
+const TOKEN = 'XXX_testtoken_xxx';
 
 export default class Auth extends React.Component{
     constructor(props) {
@@ -40,10 +43,37 @@ export default class Auth extends React.Component{
     }
 
     loginHandler = () => {
+        const authData = {
+            email: this.state.formControls.email.value,
+            password: this.state.formControls.password.value,
+            returnSecureToken: true
+        };
+        try{
+            const response = axios.post(
+                `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${TOKEN}`,
+                authData);
+        }
+        catch (e) {
+            console.log(e);
+        }
+
 
     };
 
-    registerHandler = () => {
+    registerHandler = async () => {
+        const authData = {
+            email: this.state.formControls.email.value,
+            password: this.state.formControls.password.value,
+            returnSecureToken: true
+        };
+        try{
+            const response = axios.post(
+                `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${TOKEN}`,
+                authData);
+        }
+        catch (e) {
+            console.log(e);
+        }
 
     };
 
@@ -72,7 +102,7 @@ export default class Auth extends React.Component{
             return (
                 <Input
                     key={index}
-                    inpytType={control.inputType}
+                    inputType={control.inputType}
                     value={control.value}
                     valid={control.valid}
                     touched={control.touched}
